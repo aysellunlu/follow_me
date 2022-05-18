@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Adaylar ile ilgili teknik bir ödev hazırlamam gerekiyor.",
+        "priority": "Urgent",
+        "action": 1
+    },
+    {
+        "id": 2,
+        "name": "Yapılan işlerle ilgili activity kayırları oluşturmam gerekiyor.",
+        "priority": "Regular",
+        "action": 2
+    },
+    {
+        "id": 3,
+        "name": "Teknik taskleri planlayacağım.",
+        "priority": "Trivial",
+        "action": 3
+    }
+]
