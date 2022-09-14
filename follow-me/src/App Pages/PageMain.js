@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Button, Row, Col, Image, Modal, FormControl } from 'react-bootstrap';
-import BootstrapTable from 'react-bootstrap-table-next';
-import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-filter';
+// import BootstrapTable from 'react-bootstrap-table-next';
+// import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-filter';
 import DeleteImg from '../images/trash.png';
 import EditImg from '../images/edit.png';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import Data from '../Datas/data.json';
 import Options from '../Datas/data.json';
 
@@ -30,14 +30,14 @@ const PageMain = () => {
 
     // const selectOptions = Options;
 
-    const tableData = Data.map((x) => [
-        {
-            "id": x.id,
-            "name": x.name,
-            "priority": x.priority,
-            "action": x.action
-        }
-    ])
+    // const tableData = Data.map((x) => [
+    //     {
+    //         "id": x.id,
+    //         "name": x.name,
+    //         "priority": x.priority,
+    //         "action": x.action
+    //     }
+    // ])
 
 
 
@@ -79,7 +79,9 @@ const PageMain = () => {
                         </Button>
                     </Col>
                     <Col className='mb-2'>
-                        <Button className='btn-action' onClick={() => onClickDelete()}>
+                        <Button className='btn-action'
+                        // onClick={() => onClickDelete()}
+                        >
                             <Image src={DeleteImg} width={20} />
                         </Button>
                     </Col>
@@ -129,53 +131,53 @@ const PageMain = () => {
         },
     ];
 
-    const columns = [{
-        dataField: 'name',
-        text:
-            <div className='mb-2'>
-                Name
-            </div>,
-        filter: textFilter({
-            placeholder: "Search"
-        })
-    }, {
-        dataField: 'priority',
-        text:
-            <div className='mb-2'>
-                +
-                Priority
-            </div>,
-        filter: selectFilter({
-            options: selectOptions,
-            placeholder: 'Choose'
-        })
-    }, {
-        dataField: 'action',
-        text:
-            <div className='mb-4 pb-3'>
-                Action
-            </div>
-    }];
+        // const columns = [{
+        //     dataField: 'name',
+        //     text:
+        //         <div className='mb-2'>
+        //             Name
+        //         </div>,
+        //     filter: textFilter({
+        //         placeholder: "Search"
+        //     })
+        // }, {
+        //     dataField: 'priority',
+        //     text:
+        //         <div className='mb-2'>
+        //             +
+        //             Priority
+        //         </div>,
+        //     filter: selectFilter({
+        //         options: selectOptions,
+        //         placeholder: 'Choose'
+        //     })
+        // }, {
+        //     dataField: 'action',
+        //     text:
+        //         <div className='mb-4 pb-3'>
+        //             Action
+        //         </div>
+        // }];
 
-    const onClickDelete = () => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
-            }
-        })
-    }
+    // const onClickDelete = () => {
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, delete it!'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             Swal.fire(
+    //                 'Deleted!',
+    //                 'Your file has been deleted.',
+    //                 'success'
+    //             )
+    //         }
+    //     })
+    // }
 
     return (
         <div className='container-fluid'>
@@ -210,13 +212,13 @@ const PageMain = () => {
             <div className="title mt-5 mb-3">
                 Job List
             </div>
-            <div className='mb-4'>
+            {/* <div className='mb-4'>
                 <BootstrapTable keyField='id'
                     data={products}
                     columns={columns}
                     filter={filterFactory()}
                 />
-            </div>
+            </div> */}
             <Modal size="lg" show={showEdit} onHide={handleCloseEdit}>
                 <Modal.Header closeButton>
                     <Modal.Title>

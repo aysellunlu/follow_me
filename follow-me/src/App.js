@@ -1,12 +1,12 @@
 import Header from "./UI/Header";
 import Footer from "./UI/Footer";
-import PageMain from "./App Pages/PageMain";
+import MainPage from "./App Pages/MainPage";
 
 function App() {
   return (
     <div>
       <Header />
-      <PageMain />
+      <MainPage />
       <Footer />
     </div>
   );

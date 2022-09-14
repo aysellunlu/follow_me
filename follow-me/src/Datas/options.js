@@ -1,4 +1,4 @@
-[
+const selectOptions = [
     {
         value: 0,
         label: 'Urgent'
@@ -12,3 +12,5 @@
         label: 'Trivial'
     }
 ]
+
+export default selectOptions ;
