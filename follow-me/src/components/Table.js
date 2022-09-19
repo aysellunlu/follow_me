@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Row, Col, Button, Image } from "react-bootstrap";
 import selectOptions from "../Datas/options";
 import DeleteImg from "../images/trash.png";
 import EditImg from "../images/edit.png";
 import Modal from "react-bootstrap/Modal";
 import EditModal from "./EditModal";
+import Datas from '../Datas/data.json';
 
 const Table = () => {
   const [lgShow, setLgShow] = useState(false);
+  const [items, setItems] = useState(Datas);
+  // const [datas, setDatas] = useState([]);
+
+
+  // useEffect(() => {
+  //   localStorage.setItem('items', JSON.stringify(items));
+  //   setDatas(localStorage.items)
+  //   console.log("items", items);
+  // }, [items,datas]);
+
   return (
     <div className="container-fluid">
       <div className="title">Job List</div>
@@ -32,29 +43,31 @@ const Table = () => {
       </div>
       <div className="table-title mt-3 mb-3">
         <Row>
-          <Col lg={7} sm={12}>
+          <Col lg={7} xs={4}>
             Name
           </Col>
-          <Col lg={3} sm={12}>
+          <Col lg={3} xs={4}>
             Priority
           </Col>
-          <Col lg={2} sm={12}>
+          <Col lg={2} xs={4}>
             Action
           </Col>
         </Row>
       </div>
       <hr />
+      {items &&
+      items.map((x)=>(
       <div className="table-list mt-3 mb-3">
         <Row>
-          <Col lg={7} sm={12}>
-            React tasklerini tamamla
+          <Col lg={7} xs={12}>
+            {x.name}
           </Col>
-          <Col lg={3} sm={12}>
-            <div className="urgent col-3 row justify-content-center">
-              Urgent
+          <Col lg={3} xs={12}>
+            <div className="col-3 row justify-content-center">
+              {x.priority}
             </div>
           </Col>
-          <Col lg={2} sm={12}>
+          <Col lg={2} xs={12}>
             <Row>
               <Col>
                 <Button className="btn-action" onClick={() => setLgShow(true)}>
@@ -70,58 +83,7 @@ const Table = () => {
           </Col>
         </Row>
       </div>
-      <div className="table-list mt-3 mb-3">
-        <Row>
-          <Col lg={7} sm={12}>
-            UX / UI kurslarını tamamla
-          </Col>
-          <Col lg={3} sm={12}>
-            <div className="regular col-3 row justify-content-center">
-              Regular
-            </div>
-          </Col>
-          <Col lg={2} sm={12}>
-            <Row>
-              <Col>
-                <Button className="btn-action">
-                  <Image src={EditImg} width={15} />
-                </Button>
-              </Col>
-              <Col>
-                <Button className="btn-action">
-                  <Image src={DeleteImg} width={15} />
-                </Button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </div>
-      <div className="table-list mt-3 mb-3">
-        <Row>
-          <Col lg={7} sm={12}>
-            Etkili iletişim makalelerini oku
-          </Col>
-          <Col lg={3} sm={12}>
-            <div className="trivial col-3 row justify-content-center">
-              Trivial
-            </div>
-          </Col>
-          <Col lg={2} sm={12}>
-            <Row>
-              <Col>
-                <Button className="btn-action">
-                  <Image src={EditImg} width={15} />
-                </Button>
-              </Col>
-              <Col>
-                <Button className="btn-action">
-                  <Image src={DeleteImg} width={15} />
-                </Button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </div>
+      ))}
       <Modal
         size="lg"
         show={lgShow}
@@ -137,7 +99,6 @@ const Table = () => {
         <Row className="justify-content-end col-12 mb-4">
           <Col xs={12} lg={2} className="row mt-4 pt-2">
             <Button
-              className=" row align-item-center "
               variant="danger"
               type="submit"
             >
@@ -147,7 +108,6 @@ const Table = () => {
           <Col xs={12} lg={2} className="row mt-4 pt-2">
             <Button
               onClick={() => setLgShow(false)}
-              className=" row align-item-center"
               variant="secondary"
             >
               Cancel
